@@ -228,6 +228,18 @@ private void recorrerNivel(NodeAVL node, int nivel) {
 }
 
 
+public void recorridoPreorden() {
+    recorridoPreorden((NodeAVL) root);
+    System.out.println(); // Para salto de línea después del recorrido
+}
+
+private void recorridoPreorden(NodeAVL node) {
+    if (node == null) return;
+    System.out.print(node.data + " ");
+    recorridoPreorden((NodeAVL) node.left);
+    recorridoPreorden((NodeAVL) node.right);
+}
+
 
 
 
