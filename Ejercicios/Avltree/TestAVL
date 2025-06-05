@@ -31,5 +31,14 @@ public class TestAVL {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        AVLTree<Integer> avl = new AVLTree<>();
+        avl.insert(30);
+        avl.insert(20);
+        avl.insert(40);
+        avl.delete(40);
+        System.out.println("Altura después de eliminar 40: " + avl.height());
+
+        
     }
 }
