@@ -32,5 +32,51 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
             fat = new NodeAVL(x);
         } else {
             int resC = x.compareTo(node.data);
+            if (resC == 0)
+                throw new ItemDuplicated(x + " ya se encuentra en el árbol...");
+
+            if (resC > 0) { // insertar a la derecha
+                fat.right = insert(x, (NodeAVL) node.right);
+
+                if (this.height) {
+                    switch (fat.bf) {
+                        case -1:
+                            fat.bf = 0;
+                            this.height = false;
+                            break;
+                        case 0:
+                            fat.bf = 1;
+                            this.height = true;
+                            break;
+                        case 1:
+                            fat = balanceToLeft(fat);
+                            this.height = false;
+                            break;
+                    }
+                }
+            } else { // insertar a la izquierda
+                fat.left = insert(x, (NodeAVL) node.left);
+
+                if (this.height) {
+                    switch (fat.bf) {
+                        case 1:
+                            fat.bf = 0;
+                            this.height = false;
+                            break;
+                        case 0:
+                            fat.bf = -1;
+                            this.height = true;
+                            break;
+                        case -1:
+                            fat = balanceToRight(fat);
+                            this.height = false;
+                            break;
+                    }
+                }
+            }
+        }
+
+        return fat;
+    }
 
  }
