@@ -145,4 +145,40 @@ private NodeAVL rotateSR(NodeAVL node) {
     return temp;
 }
 
+@Override
+public NodeAVL delete(NodeAVL node, int value) {
+    if (node == null) return null;
+
+    if (value < node.data) {
+        node.left = delete((NodeAVL) node.left, value);
+        node = balanceToRight(node);
+    } else if (value > node.data) {
+        node.right = delete((NodeAVL) node.right, value);
+        node = balanceToLeft(node);
+    } else {
+        // Nodo con un solo hijo o sin hijos
+        if (node.left == null)
+            return (NodeAVL) node.right;
+        else if (node.right == null)
+            return (NodeAVL) node.left;
+
+        // Nodo con dos hijos: obtener el sucesor
+        NodeAVL successor = getMinNode((NodeAVL) node.right);
+        node.data = successor.data;
+        node.right = delete((NodeAVL) node.right, successor.data);
+        node = balanceToLeft(node);
+    }
+
+    // Actualizar el factor de balance si es necesario
+    node.updateBF();
+    return node;
+}
+
+private NodeAVL getMinNode(NodeAVL node) {
+    while (node.left != null) {
+        node = (NodeAVL) node.left;
+    }
+    return node;
+}
+
  }  
