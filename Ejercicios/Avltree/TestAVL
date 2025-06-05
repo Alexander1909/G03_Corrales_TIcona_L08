@@ -65,4 +65,18 @@ public class TestAVL {
     }
 
 
+     AVLTree<Integer> avl = new AVLTree<>();
+        int[] datos = {50, 30, 70, 20, 40, 60, 80};
+
+        for (int dato : datos) {
+            avl.insert(dato);
+        }
+
+        System.out.println("Recorrido Preorden:");
+        avl.recorridoPreorden();
+
+
+
+
+
         
