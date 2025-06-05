@@ -17,4 +17,20 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
         }
     }
 
+    // Método público de inserción
+    public void insert(E x) throws ItemDuplicated {
+        this.height = false;
+        this.root = insert(x, (NodeAVL) this.root);
+    }
+
+    // Método protegido con lógica AVL
+    protected NodeAVL insert(E x, NodeAVL node) throws ItemDuplicated {
+        NodeAVL fat = node;
+
+        if (node == null) {
+            this.height = true;
+            fat = new NodeAVL(x);
+        } else {
+            int resC = x.compareTo(node.data);
+
  }
