@@ -131,6 +131,18 @@ private NodeAVL balanceToRight(NodeAVL node) {
     return node;
 }
 
+private NodeAVL rotateSL(NodeAVL node) {
+    NodeAVL temp = (NodeAVL) node.right;
+    node.right = temp.left;
+    temp.left = node;
+    return temp;
+}
 
+private NodeAVL rotateSR(NodeAVL node) {
+    NodeAVL temp = (NodeAVL) node.left;
+    node.left = temp.right;
+    temp.right = node;
+    return temp;
+}
 
  }  
