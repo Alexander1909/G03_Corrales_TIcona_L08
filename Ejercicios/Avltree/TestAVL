@@ -1,0 +1,35 @@
+public class TestAVL {
+    public static void main(String[] args) {
+        try {
+            AVLTree<Integer> avl = new AVLTree<>();
+
+            // Caso 1: Rotación simple a la derecha (RSR)
+            avl.insert(30);
+            avl.insert(20);
+            avl.insert(10); // provoca RSR
+
+            // Caso 2: Rotación simple a la izquierda (RSL)
+            avl.insert(40);
+            avl.insert(50); // provoca RSL
+
+            // Caso 3: Rotación doble derecha-izquierda (RDL)
+            avl.insert(45); // provoca RDL
+
+            // Caso 4: Rotación doble izquierda-derecha (RDR)
+            avl.insert(5);
+            avl.insert(7); // provoca RDR
+
+            // Caso 5: insertar un duplicado
+            // avl.insert(30); // debería lanzar ItemDuplicated
+
+            // Otros casos para probar más inserciones y ver más rebalanceos
+            avl.insert(3);
+            avl.insert(6);
+            avl.insert(8);
+
+            System.out.println("AVL construido correctamente.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
