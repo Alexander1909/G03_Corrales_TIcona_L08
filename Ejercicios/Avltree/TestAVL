@@ -39,6 +39,18 @@ public class TestAVL {
         avl.delete(40);
         System.out.println("Altura después de eliminar 40: " + avl.height());
 
-        
+
+
+        AVLTree<Integer> avl = new AVLTree<>();
+        int[] datos = {50, 30, 70, 20, 40, 60, 80, 10, 25, 65};
+
+        for (int d : datos) {
+            avl.insert(d);
+        }
+
+        System.out.println("Recorrido BFS del árbol AVL:");
+        avl.printBFS();  // <-- se imprimirá por consola
     }
 }
+
+        
